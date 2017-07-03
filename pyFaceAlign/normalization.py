@@ -2,6 +2,7 @@
 
 import numpy as np
 import abc
+from .rmse import rmse
 
 '''
 Kabsch algorithm is a method for calculating the optimal rotation matrix
@@ -26,14 +27,23 @@ class kabsch2D(Normalize):
     def __init__(self):
         pass
 
+    def centroid(self, landmarks):
+        '''
+        :param landmarks: (MxD) matrix (if 68 points for each dataset, Mx68 dimension)
+        :return: translated to origin(0,0)
+        '''
+        c = landmarks.mean(axis=1)
+        return landmarks-c
+
     def normalize(self, landmarks):
         '''
-        landmarks is M x D matrix (M is number of data, D is dimension)
+        :param landmarks: (MxD) matrix (if 68 points for each dataset, Mx68 dimension)
+        :return: normalized dataset
         '''
         if type(landmarks) is np.matrix:
 
             # 1. translation (move to centroid)
-            translated = landmarks - landmarks.mean(1)
+            translated = landmarks - landmarks.mean(axis=1)
 
             # 2. compute covariance matrix
             #cov = np.cov(np.transpose(translated))

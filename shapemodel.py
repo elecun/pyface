@@ -12,11 +12,11 @@ if __name__ == "__main__":
     print("Read ", landmarks.shape, " dimension of landmark data files.")
 
     # 2. display the raw landmark data
-    plot.matplot2D(landmarks)
+    #plot.matplot2D(landmarks)
 
     # 3. normalization using kabsch
     kabsch = kabsch2D()
     normalized_landmarks = kabsch.normalize(landmarks)
 
     # 4. show the normalized landmark data
-    plot.matplot2D(normalized_landmarks)
+    #plot.matplot2D(normalized_landmarks)
