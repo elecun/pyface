@@ -46,8 +46,7 @@ class kabsch2D(Normalize):
             translated = landmarks - landmarks.mean(axis=1)
 
             # 2. compute covariance matrix
-            #cov = np.cov(np.transpose(translated))
-            #print(cov.shape)
+            cov = np.cov(translated)
 
             #. compute optimal rotation matrix
             #u, s, v = np.linalg.svd(cov, full_matrices=True)

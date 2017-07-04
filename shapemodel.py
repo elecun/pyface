@@ -19,4 +19,4 @@ if __name__ == "__main__":
     normalized_landmarks = kabsch.normalize(landmarks)
 
     # 4. show the normalized landmark data
-    #plot.matplot2D(normalized_landmarks)
+    plot.matplot2D(normalized_landmarks)
