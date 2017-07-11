@@ -2,8 +2,8 @@
 
 from pyFaceAlign.filereader import ptsReader
 import pyFaceAlign.plot as plot
-import matplotlib.pyplot as plt
 from pyFaceAlign.normalization import kabsch2D
+import numpy as np
 
 if __name__ == "__main__":
     # 1. read all pts file to create shape model
@@ -11,12 +11,14 @@ if __name__ == "__main__":
     landmarks = filereader.read()
     print("Read ", landmarks.shape, " dimension of landmark data files.")
 
-    # 2. display the raw landmark data
-    #plot.matplot2D(landmarks)
+    # 1.1 display the raw landmark data
+    plot.landmark_plot2D(landmarks)
 
-    # 3. normalization using kabsch
-    kabsch = kabsch2D()
-    normalized_landmarks = kabsch.normalize(landmarks)
+    # 2. normalization using kabsch
+    normalize_process = kabsch2D()
+    normalized_landmarks = normalize_process.normalize(landmarks)
 
-    # 4. show the normalized landmark data
-    plot.matplot2D(normalized_landmarks)
+    # 2.1 show the normalized landmark data
+    plot.landmark_plot2D(normalized_landmarks)
+
+    # 3. PCA

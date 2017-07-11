@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def matplot2D(landmarks):
+def landmark_plot2D(landmarks):
     '''
     :param landmarks: landmark matrix [x1;,,,xn;y1;...yn]
     :return: plot
@@ -15,12 +15,8 @@ def matplot2D(landmarks):
         plt.show()
         plt.close()
 
-def plot2D(landmarks):
-    '''
-    :param landmarks: array of landmark data [[x1...xn][y1...yn]]
-    :return: plot
-    '''
-    plt.gca().invert_yaxis()  # y axis is needed to invert
-    plt.plot([data[0] for data in landmarks], [data[1] for data in landmarks], 'ro')
-    plt.show()
-    plt.close()
+    elif type(landmarks) is list:
+        plt.gca().invert_yaxis()  # y axis is needed to invert
+        plt.plot([data[0] for data in landmarks], [data[1] for data in landmarks], 'ro')
+        plt.show()
+        plt.close()
