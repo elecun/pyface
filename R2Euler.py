@@ -48,6 +48,9 @@ def R2Euler(datafiles):
             EulerDeg.append(Rad2Deg([roll, pitch, yaw]))
     return EulerDeg
 
+def format(value):
+    return "%.3f" % value
+
 
 if __name__ == "__main__":
 
@@ -63,6 +66,15 @@ if __name__ == "__main__":
 
     # 2. Convert Rotation matrix to Euler Angle
     Euler = R2Euler(files)
-    plt.plot(Euler)
+    plt.plot([a[0] for a in Euler], 'r-') # Roll
+    plt.plot([a[1] for a in Euler], 'g-') # Pitch
+    plt.plot([a[2] for a in Euler], 'b-') # Yaw
     plt.show()
     plt.close()
+
+    # write file
+    out = open("result.txt", "w")
+    out.write("Roll\tPitch\tYaw\n")
+    for data in Euler:
+        out.write(str(data[0])+"\t"+str(data[1])+"\t"+str(data[2])+"\n")
+    out.close()
