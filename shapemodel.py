@@ -20,5 +20,3 @@ if __name__ == "__main__":
 
     # 2.1 show the normalized landmark data
     plot.landmark_plot2D(normalized_landmarks)
-
-    # 3. PCA
